@@ -1,2 +1,2 @@
 # EROStation
-Repo foe EROStation fork of Citadel
+Repo for EROStation fork of Citadel
