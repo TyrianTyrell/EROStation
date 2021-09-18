@@ -4,8 +4,6 @@
 //1:1 HUD layout stuff
 
 //organ defines
-#define COCK_SIZE_MIN		1
-#define COCK_SIZE_MAX		36
 
 #define KNOT_GIRTH_RATIO_MAX		3
 #define KNOT_GIRTH_RATIO_DEF		2.1
@@ -14,8 +12,6 @@
 #define BALLS_SACK_SIZE_MIN 1
 #define BALLS_SACK_SIZE_DEF	8
 #define BALLS_SACK_SIZE_MAX 40
-
-#define CUM_RATE			5
 
 #define EGG_GIRTH_MIN		1 //inches
 #define EGG_GIRTH_DEF		6
@@ -47,10 +43,7 @@
 #define MAX_BODYSIZE		200
 
 #define BREASTS_SIZE_MIN 	BREASTS_SIZE_A
-#define BREASTS_SIZE_DEF	BREASTS_SIZE_D
 #define BREASTS_SIZE_MAX 	BREASTS_SIZE_IMPOSSIBLE
-
-#define MILK_RATE			5
 
 #define AROUSAL_MINIMUM_DEFAULT 	0
 #define AROUSAL_MAXIMUM_DEFAULT 	100
@@ -63,23 +56,14 @@
 
 
 //Species stuffs. Remember to change this if upstream updates species flags
-#define MUTCOLORS2		35
-#define MUTCOLORS3		36
-#define NOAROUSAL		37 //Stops all arousal effects
-#define NOGENITALS		38 //Cannot create, use, or otherwise have genitals
-#define MATRIXED		39	//if icon is color matrix'd
-#define SKINTONE		40	//uses skin tones
 
 //Citadel istypes
 #define isborer(A) (istype(A, /mob/living/simple_animal/borer))
 
 //stamina stuff
 #define STAMINA_SOFTCRIT					100 //softcrit for stamina damage. prevents standing up, prevents performing actions that cost stamina, etc, but doesn't force a rest or stop movement
-#define STAMINA_CRIT						140 //crit for stamina damage. forces a rest, and stops movement until stamina goes back to stamina softcrit
 #define STAMINA_SOFTCRIT_TRADITIONAL		0	//same as STAMINA_SOFTCRIT except for the more traditional health calculations
 #define STAMINA_CRIT_TRADITIONAL			-40 //ditto, but for STAMINA_CRIT
-
-#define CRAWLUNDER_DELAY							30 //Delay for crawling under a standing mob
 
 //component stuff
 #define COMSIG_COMBAT_TOGGLED "combatmode_toggled" //called by combat mode toggle on all equipped items. args: (mob/user, combatmode)

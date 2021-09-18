@@ -13,9 +13,6 @@
 ///from base of atom/Bumped(): (/atom/movable)
 #define COMSIG_ATOM_BUMPED "atom_bumped"
 
-///from base of atom/set_light(): (l_range, l_power, l_color)
-#define COMSIG_ATOM_SET_LIGHT "atom_set_light"
-
 ///from base of atom/wrench_act(): (mob/living/user, obj/item/I)
 #define COMSIG_ATOM_WRENCH_ACT "atom_wrench_act"
 ///from base of atom/multitool_act(): (mob/living/user, obj/item/I)
@@ -44,17 +41,12 @@
 #define COMSIG_MOB_LOGOUT "mob_logout"
 ///from base of mob/set_stat(): (new_stat)
 #define COMSIG_MOB_STATCHANGE "mob_statchange"
-///from base of mob/clickon(): (atom/A, params)
-#define COMSIG_MOB_CLICKON "mob_clickon"
 ///from base of mob/MiddleClickOn(): (atom/A)
 #define COMSIG_MOB_MIDDLECLICKON "mob_middleclickon"
-	#define COMSIG_MOB_CANCEL_CLICKON (1<<0)
 ///from base of /mob/living/proc/apply_damage(): (damage, damagetype, def_zone)
 #define COMSIG_MOB_APPLY_DAMGE	"mob_apply_damage"
 ///from base of obj/item/attack_qdeleted(): (atom/target, mob/user, proxiumity_flag, click_parameters)
 #define COMSIG_MOB_ITEM_ATTACK_QDELETED "mob_item_attack_qdeleted"			//from base of /mob/transfer_ckey(): (new_character, old_character)
-	#define COMPONENT_DO_NOT_PENALIZE_GHOSTING (1<<1)
-	#define COMPONENT_FREE_GHOSTING (1<<2)
 
 ///from /mob/say_dead(): (mob/speaker, message)
 #define COMSIG_MOB_DEADSAY "mob_deadsay"
@@ -62,12 +54,9 @@
 ///from /mob/living/emote(): ()
 #define COMSIG_MOB_EMOTE "mob_emote"
 ///from base of mob/swap_hand(): (obj/item)
-#define COMSIG_MOB_SWAP_HANDS "mob_swap_hands"
-	#define COMPONENT_BLOCK_SWAP (1<<0)
 
 ///from base of /obj/item/bodypart/proc/attach_limb(): (new_limb, special) allows you to fail limb attachment
 #define COMSIG_LIVING_ATTACH_LIMB "living_attach_limb"
-	#define COMPONENT_NO_ATTACH (1<<0)
 ///sent from borg mobs to itself, for tools to catch an upcoming destroy() due to safe decon (rather than detonation)
 #define COMSIG_BORG_SAFE_DECONSTRUCT "borg_safe_decon"
 

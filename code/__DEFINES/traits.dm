@@ -160,7 +160,6 @@
 #define TRAIT_HEAT_DETECT	"heat_detect"
 #define TRAIT_HEAT			"heat"
 #define TRAIT_RADRESONANCE "radioactive_resonance" //Hyperstation edit
-#define TRAIT_SWIMMING			"swimming"			//only applied by /datum/element/swimming, for checking
 #define TRAIT_CAPTAIN_METABOLISM "captain-metabolism"
 #define TRAIT_ABDUCTOR_TRAINING "abductor-training"
 #define TRAIT_ABDUCTOR_SCIENTIST_TRAINING "abductor-scientist-training"
@@ -277,7 +276,6 @@
 #define TRAIT_SPOOKY_THROW      "spooky_throw"
 #define TRAIT_CUM_PLUS			"cum_plus"
 #define TRAIT_NEVER_CLONE       "donotclone"
-#define TRAIT_COLDBLOODED		"coldblooded"	// Your body is literal room temperature. Does not make you immune to the temp.
 #define TRAIT_FLIMSY		"flimsy" //you have 20% less maxhealth
 
 
@@ -288,10 +286,6 @@
 #define TRAIT_APATHETIC			"apathetic" //doesn't care
 
 #define TRAIT_TOUGH		"tough" //you have 10% more maxhealth
-#define TRAIT_AUTO_CATCH_ITEM	"auto_catch_item"
-#define TRAIT_CLOWN_MENTALITY	"clown_mentality" // The future is now, clownman.
-#define TRAIT_FREESPRINT		"free_sprinting"
-#define TRAIT_NO_TELEPORT		"no-teleport" //you just can't
 #define TRAIT_NO_ALCOHOL		"alcohol_intolerance"
 
 // common trait sources
