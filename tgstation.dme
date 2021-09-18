@@ -3724,8 +3724,6 @@
 #include "hyperstation\code\_DEFINES\obj_flags.dm"
 #include "hyperstation\code\_DEFINES\quirks.dm"
 #include "hyperstation\code\_DEFINES\dcs\signals.dm"
-#include "hyperstation\code\_HELPERS\type2type.dm"
-#include "hyperstation\code\_HELPERS\unused.dm"
 #include "interface\interface.dm"
 #include "interface\menu.dm"
 #include "interface\stylesheet.dm"
