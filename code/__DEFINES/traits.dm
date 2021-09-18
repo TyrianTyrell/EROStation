@@ -87,6 +87,8 @@
 #define TRAIT_PACIFISM			"pacifism"
 #define TRAIT_IGNORESLOWDOWN	"ignoreslow"
 #define TRAIT_IGNOREDAMAGESLOWDOWN "ignoredamageslowdown"
+#define TRAIT_GOTTAGOFAST		"fast"
+#define TRAIT_GOTTAGOREALLYFAST	"2fast"
 #define TRAIT_DEATHCOMA			"deathcoma" //Causes death-like unconsciousness
 #define TRAIT_FAKEDEATH			"fakedeath" //Makes the owner appear as dead to most forms of medical examination
 #define TRAIT_DISFIGURED		"disfigured"
@@ -113,6 +115,7 @@
 #define TRAIT_NOFIRE			"nonflammable"
 #define TRAIT_NOGUNS			"no_guns"
 #define TRAIT_NOHUNGER			"no_hunger"
+#define TRAIT_NOTHIRST			"no_thirst"
 #define TRAIT_EASYDISMEMBER		"easy_dismember"
 #define TRAIT_LIMBATTACHMENT 	"limb_attach"
 #define TRAIT_NOLIMBDISABLE		"no_limb_disable"
@@ -125,6 +128,7 @@
 #define TRAIT_HOLY				"holy"
 #define TRAIT_DEPRESSION		"depression"
 #define TRAIT_JOLLY				"jolly"
+#define TRAIT_HEADPAT_SLUT		"headpat_slut"
 #define TRAIT_NOCRITDAMAGE		"no_crit"
 #define TRAIT_NOSLIPWATER		"noslip_water"
 #define TRAIT_NOSLIPALL			"noslip_all"
@@ -151,6 +155,12 @@
 #define TRAIT_STRONG_GRABBER	"strong_grabber"
 #define TRAIT_CALCIUM_HEALER	"calcium_healer"
 #define TRAIT_MAGIC_CHOKE		"magic_choke"
+#define TRAIT_ALCOHOL_LIGHTWEIGHT	"alcohol_lightweight" //Skyrat port
+#define TRAIT_CURSED_BLOOD	"cursed_blood" //Yo dawg I heard you like bloodborne references so I put a
+#define TRAIT_HEAT_DETECT	"heat_detect"
+#define TRAIT_HEAT			"heat"
+#define TRAIT_RADRESONANCE "radioactive_resonance" //Hyperstation edit
+#define TRAIT_SWIMMING			"swimming"			//only applied by /datum/element/swimming, for checking
 #define TRAIT_CAPTAIN_METABOLISM "captain-metabolism"
 #define TRAIT_ABDUCTOR_TRAINING "abductor-training"
 #define TRAIT_ABDUCTOR_SCIENTIST_TRAINING "abductor-scientist-training"
@@ -192,12 +202,18 @@
 #define TRAIT_MUSICIAN			"musician"
 #define TRAIT_PERMABONER		"permanent_arousal"
 #define TRAIT_NEVERBONER		"never_aroused"
-#define TRAIT_NYMPHO			"nymphomaniac"
+#define	TRAIT_CROCRIN_IMMUNE    "crocin_immune"
+#define TRAIT_NYMPHO			"nymphomania"
+#define TRAIT_DISTANT			"headpat_hater"
+//#define TRAIT_FLUID_LEAK	"leaky_fluids" removed because milk snail trails are not okay
 #define TRAIT_MASO              "masochism"
+#define TRAIT_CHOKE_SLUT		"choke_slut"
 #define	TRAIT_HIGH_BLOOD        "high_blood"
+#define TRAIT_PHARMA            "hepatic_pharmacokinesis"
 #define TRAIT_PARA              "paraplegic"
 #define TRAIT_EMPATH			"empath"
 #define TRAIT_FRIENDLY			"friendly"
+#define TRAIT_ASSBLASTUSA       "assblastusa"
 #define TRAIT_SNOB				"snob"
 #define TRAIT_MULTILINGUAL		"multilingual"
 #define TRAIT_CULT_EYES 		"cult_eyes"
@@ -259,6 +275,24 @@
 // item traits
 #define TRAIT_NODROP            "nodrop"
 #define TRAIT_SPOOKY_THROW      "spooky_throw"
+#define TRAIT_CUM_PLUS			"cum_plus"
+#define TRAIT_NEVER_CLONE       "donotclone"
+#define TRAIT_COLDBLOODED		"coldblooded"	// Your body is literal room temperature. Does not make you immune to the temp.
+#define TRAIT_FLIMSY		"flimsy" //you have 20% less maxhealth
+
+
+//Hyper
+#define TRAIT_VIRILE		"virile" //you have 20% more chance of impreg
+#define TRAIT_MACROPHILE		"macrophile" //likes the big
+#define TRAIT_MICROPHILE		"microphile" //likes the small
+#define TRAIT_APATHETIC			"apathetic" //doesn't care
+
+#define TRAIT_TOUGH		"tough" //you have 10% more maxhealth
+#define TRAIT_AUTO_CATCH_ITEM	"auto_catch_item"
+#define TRAIT_CLOWN_MENTALITY	"clown_mentality" // The future is now, clownman.
+#define TRAIT_FREESPRINT		"free_sprinting"
+#define TRAIT_NO_TELEPORT		"no-teleport" //you just can't
+#define TRAIT_NO_ALCOHOL		"alcohol_intolerance"
 
 // common trait sources
 #define TRAIT_GENERIC "generic"
@@ -325,6 +359,7 @@
 #define SLEEPING_CARP_TRAIT "sleeping_carp"
 #define RISING_BASS_TRAIT "rising_bass"
 #define ABDUCTOR_ANTAGONIST "abductor-antagonist"
+#define NUKEOP_ANTAGONIST "nukeop-antagonist"
 #define MADE_UNCLONEABLE "made-uncloneable"
 #define TIMESTOP_TRAIT "timestop"
 #define DOMAIN_TRAIT "domain"

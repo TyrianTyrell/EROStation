@@ -38,18 +38,20 @@
 #define BLOODCRAWL_EAT 2
 
 // Mob bio-types flags
-#define MOB_ORGANIC		(1 << 0)
-#define MOB_MINERAL		(1 << 1)
-#define MOB_ROBOTIC		(1 << 2)
-#define MOB_UNDEAD		(1 << 3)
-#define MOB_HUMANOID	(1 << 4)
-#define MOB_BUG			(1 << 5)
-#define MOB_BEAST		(1 << 6)
-#define MOB_EPIC		(1 << 7)	// Megafauna
-#define MOB_REPTILE		(1 << 8)
-#define MOB_SPIRIT		(1 << 9)
+#define MOB_ORGANIC 	(1 << 0)
+#define MOB_INORGANIC 	(1 << 1)
+#define MOB_ROBOTIC 	(1 << 2)
+#define MOB_MINERAL		(1 << 3)
+#define MOB_SILICON     (1 << 4)
+#define MOB_UNDEAD		(1 << 5)
+#define MOB_HUMANOID 	(1 << 6)
+#define MOB_BUG 		(1 << 7)
+#define MOB_BEAST		(1 << 8)
+#define MOB_EPIC		(1 << 9) //megafauna
+#define MOB_REPTILE		(1 << 10)
+#define MOB_SPIRIT		(1 << 11)
 /// Mobs that otherwise support nanites
-#define MOB_NANITES		(1 << 10)
+#define MOB_NANITES		(1 << 12)
 
 // Organ defines for carbon mobs
 #define ORGAN_ORGANIC   1
@@ -71,11 +73,14 @@
 #define DEFAULT_BODYPART_ICON 'icons/mob/human_parts.dmi'
 #define DEFAULT_BODYPART_ICON_ORGANIC 'icons/mob/human_parts_greyscale.dmi'
 #define DEFAULT_BODYPART_ICON_ROBOTIC 'icons/mob/augmentation/augments.dmi'
+#define DEFAULT_BODYPART_ICON_CITADEL 'modular_citadel/icons/mob/mutant_bodyparts.dmi'
 
 #define MONKEY_BODYPART "monkey"
-#define ALIEN_BODYPART  "alien"
-#define LARVA_BODYPART  "larva"
-#define DEVIL_BODYPART  "devil"
+#define TERATOMA_BODYPART "teratoma"
+#define ALIEN_BODYPART "alien"
+#define LARVA_BODYPART "larva"
+#define DEVIL_BODYPART "devil"
+#define WENDIGO_BODYPART "wendigo"
 /*see __DEFINES/inventory.dm for bodypart bitflag defines*/
 
 // Health/damage defines for carbon mobs
@@ -190,6 +195,13 @@
 #define ETHEREAL_CHARGE_FULL	  100
 #define ETHEREAL_CHARGE_OVERLOAD  125
 #define ETHEREAL_CHARGE_DANGEROUS 150
+//Hyperstation Thirst
+#define THIRST_LEVEL_THRESHOLD	800		//Set to 0 to stop clamping
+#define THIRST_LEVEL_QUENCHED	450
+#define THIRST_LEVEL_THIRSTY	250
+#define THIRST_LEVEL_PARCHED	150
+#define THIRST_LEVEL_START_MIN	250
+#define THIRST_LEVEL_START_MAX	400
 
 // Slime evolution threshold. Controls how fast slimes can split/grow
 #define SLIME_EVOLUTION_THRESHOLD 10
@@ -287,6 +299,7 @@
 #define OFFSET_HAIR		"hair"
 #define OFFSET_FHAIR	"fhair"
 #define OFFSET_MUTPARTS	"mutantparts"
+#define OFFSET_FACE "face"
 
 // MINOR TWEAKS/MISC
 #define AGE_MIN					18	// youngest a character can be // CITADEL EDIT - 17 --> 18
@@ -300,7 +313,8 @@
 
 #define	HUNGER_FACTOR			 0.1	// factor at which mob nutrition decreases
 #define	ETHEREAL_CHARGE_FACTOR	 0.08	// factor at which ethereal's charge decreases
-#define	REAGENTS_METABOLISM		 0.4	// How many units of reagent are consumed per tick, by default.
+#define	THIRST_FACTOR		0.08	//factor at which mob thirst decreases
+#define	REAGENTS_METABOLISM 0.4	//How many units of reagent are consumed per tick, by default.
 #define REAGENTS_EFFECT_MULTIPLIER (REAGENTS_METABOLISM / 0.4)	// By defining the effect multiplier this way, it'll exactly adjust all effects according to how they originally were with the 0.4 metabolism
 
 // Roundstart trait system

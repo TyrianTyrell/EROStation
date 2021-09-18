@@ -30,7 +30,10 @@
 
 #define DEF_VAGINA_SHAPE	"Human"
 
+//organ defines
 #define COCK_SIZE_DEF		6
+#define COCK_SIZE_MIN		1
+#define COCK_SIZE_MAX		36
 
 #define COCK_DIAMETER_RATIO_MAX		0.42
 #define COCK_DIAMETER_RATIO_DEF		0.25
@@ -47,7 +50,7 @@
 #define BALLS_SIZE_DEF		2
 #define BALLS_SIZE_MAX		3
 
-#define CUM_RATE			2 // units per 10 seconds
+#define CUM_RATE			5
 #define CUM_RATE_MULT		1
 #define CUM_EFFICIENCY		1 //amount of nutrition required per life()
 
@@ -58,7 +61,7 @@
 
 #define DEF_BREASTS_SHAPE	"Pair"
 
-#define MILK_RATE			3
+#define MILK_RATE			5
 #define MILK_RATE_MULT		1
 #define MILK_EFFICIENCY		1
 
@@ -102,8 +105,8 @@
 #define GENITAL_EXAMINE		(1<<13)
 #define VORE_EXAMINE		(1<<14)
 #define TRASH_FORCEFEED		(1<<15)
-#define TOGGLES_CITADEL 0
-
+//#define TOGGLES_CITADEL 0
+#define TOGGLES_CITADEL (EATING_NOISES|DIGESTION_NOISES)
 //belly sound pref things
 #define NORMIE_HEARCHECK 4
 

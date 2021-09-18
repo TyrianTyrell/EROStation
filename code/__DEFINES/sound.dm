@@ -31,6 +31,9 @@
 /// Default range at which sound distance multiplier applies
 #define SOUND_DEFAULT_MULTIPLIER_EFFECT_RANGE 7
 
+//Hyperstation Channels
+#define CHANNEL_REACTOR_ALERT 1007 // reactor sounds
+
 //THIS SHOULD ALWAYS BE THE LOWEST ONE!
 //KEEP IT UPDATED
 

@@ -161,6 +161,9 @@
 #define SHOVE_OFFBALANCE_DURATION 3 SECONDS
 
 
+
+//Combat object defines
+
 //Embedded objects
 
 #define EMBEDDED_PAIN_CHANCE 					15	//Chance for embedded objects to cause pain (damage user)
@@ -171,7 +174,7 @@
 #define EMBEDDED_IMPACT_PAIN_MULTIPLIER			4	//Coefficient of multiplication for the damage the item does when it first embeds (this*item.w_class)
 #define EMBED_THROWSPEED_THRESHOLD				4	//The minimum value of an item's throw_speed for it to embed (Unless it has embedded_ignore_throwspeed_threshold set to 1)
 #define EMBEDDED_UNSAFE_REMOVAL_PAIN_MULTIPLIER 8	//Coefficient of multiplication for the damage the item does when removed without a surgery (this*item.w_class)
-#define EMBEDDED_UNSAFE_REMOVAL_TIME			30	//A Time in ticks, total removal time = (this*item.w_class)
+#define EMBEDDED_UNSAFE_REMOVAL_TIME			150	//A Time in ticks, total removal time = (this*item.w_class)
 #define EMBEDDED_JOSTLE_CHANCE					5	//Chance for embedded objects to cause pain every time they move (jostle)
 #define EMBEDDED_JOSTLE_PAIN_MULTIPLIER			1	//Coefficient of multiplication for the damage the item does while
 #define EMBEDDED_PAIN_STAM_PCT					0.0	//This percentage of all pain will be dealt as stam damage rather than brute (0-1)
@@ -248,7 +251,7 @@
 #define BODY_ZONE_PRECISE_R_FOOT	"r_foot"
 
 //We will round to this value in damage calculations.
-#define DAMAGE_PRECISION 0.01
+#define DAMAGE_PRECISION 0.1
 
 //stamina recovery defines. Blocked if combat mode is on.
 #define STAM_RECOVERY_STAM_CRIT		-7.5

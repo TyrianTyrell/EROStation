@@ -8,7 +8,7 @@
 
 #define DEFAULT_SCAN_RANGE		7	//default view range for finding targets.
 
-//Mode defines. If you add a new one make sure you update mode_name in /mob/living/simple_animal/bot
+//Mode defines
 #define BOT_IDLE 			0	// idle
 #define BOT_HUNT 			1	// found target, hunting
 #define BOT_PREP_ARREST 	2	// at target, preparing to arrest
@@ -39,6 +39,7 @@
 #define HONK_BOT			(1<<5)	// Honkbots & ED-Honks
 #define FIRE_BOT			(1<<6)  // Firebots
 #define HYGIENE_BOT			(1<<7)  // Hygienebots
+#define HUG_BOT 			(1<<8)  // Hugbots
 
 //AI notification defines
 #define		NEW_BORG     1

@@ -56,17 +56,20 @@
 ///In most cases you want a subsystem instead, so don't use this unless you have a good reason
 #define TIMER_LOOP				(1<<5)
 
-///Empty ID define
+#define TIMER_NO_INVOKE_WARNING 600 //number of byond ticks that are allowed to pass before the timer subsystem thinks it hung on something
+
 #define TIMER_ID_NULL -1
+//For servers that can't do with any additional lag, set this to none in flightpacks.dm in subsystem/processing.
+#define FLIGHTSUIT_PROCESSING_NONE 0
+#define FLIGHTSUIT_PROCESSING_FULL 1
 
-//! ## Initialization subsystem
+#define INITIALIZATION_INSSATOMS 0	//New should not call Initialize
+#define INITIALIZATION_INNEW_MAPLOAD 2	//New should call Initialize(TRUE)
+#define INITIALIZATION_INNEW_REGULAR 1	//New should call Initialize(FALSE)
 
-///New should not call Initialize
-#define INITIALIZATION_INSSATOMS 0
-///New should call Initialize(TRUE)
-#define INITIALIZATION_INNEW_MAPLOAD 2
-///New should call Initialize(FALSE)
-#define INITIALIZATION_INNEW_REGULAR 1
+#define INITIALIZE_HINT_NORMAL 0    //Nothing happens
+#define INITIALIZE_HINT_LATELOAD 1  //Call LateInitialize
+#define INITIALIZE_HINT_QDEL 2  //Call qdel on the atom
 
 //! ### Initialization hints
 
@@ -152,6 +155,7 @@
 // If the subsystem isn't listed here it's either DEFAULT or PROCESS (if it's a processing subsystem child)
 
 #define FIRE_PRIORITY_VORE			5
+#define FIRE_PRIORITY_PING			10
 #define FIRE_PRIORITY_ACTIVITY		10
 #define FIRE_PRIORITY_IDLE_NPC		10
 #define FIRE_PRIORITY_SERVER_MAINT	10
@@ -175,6 +179,7 @@
 #define FIRE_PRIORITY_AIR_TURFS		40
 #define FIRE_PRIORITY_DEFAULT		50
 #define FIRE_PRIORITY_PARALLAX		65
+#define FIRE_PRIORITY_FLIGHTPACKS	80
 #define FIRE_PRIORITY_MOBS			100
 #define FIRE_PRIORITY_TGUI			110
 #define FIRE_PRIORITY_PROJECTILES	200
@@ -230,6 +235,7 @@
 	do {\
 		var/list/ad = A.add_overlays;\
 		var/list/rm = A.remove_overlays;\
+		var/list/po = A.priority_overlays;\
 		if(LAZYLEN(rm)){\
 			A.overlays -= rm;\
 			rm.Cut();\
@@ -237,6 +243,9 @@
 		if(LAZYLEN(ad)){\
 			A.overlays |= ad;\
 			ad.Cut();\
+		}\
+		if(LAZYLEN(po)){\
+			A.overlays |= po;\
 		}\
 		A.flags_1 &= ~OVERLAY_QUEUED_1;\
 	} while(FALSE)

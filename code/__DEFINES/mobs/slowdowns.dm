@@ -8,3 +8,5 @@
 #define SOFTCRIT_ADD_SLOWDOWN 2
 /// slowdown when crawling
 #define CRAWLING_ADD_SLOWDOWN 4
+// Carry sowdown
+#define HUMAN_CARRY_SLOWDOWN 0
