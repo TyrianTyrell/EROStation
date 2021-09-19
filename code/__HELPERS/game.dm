@@ -246,8 +246,10 @@
 	return found_mobs
 
 /proc/get_hearers_in_view(R, atom/source)
+	// Returns a list of hearers in view(R) from source (ignoring luminosity). Used in saycode.
 	var/turf/T = get_turf(source)
 	. = list()
+
 	if(!T)
 		return
 	var/list/processing = list()
@@ -255,7 +257,7 @@
 		processing += T.contents
 	else
 		var/lum = T.luminosity
-		T.luminosity = 6
+		T.luminosity = 6 // This is the maximum luminosity
 		var/list/cached_view = view(R, T)
 		for(var/mob/M in cached_view)
 			processing += M
@@ -576,8 +578,11 @@
 	if((character.mind.assigned_role == "Cyborg") || (character.mind.assigned_role == character.mind.special_role))
 		return
 
+	var/displayed_rank = rank
+	if(character.client && character.client.prefs && character.client.prefs.alt_titles_preferences[rank])
+		displayed_rank = character.client.prefs.alt_titles_preferences[rank]
 	var/obj/machinery/announcement_system/announcer = pick(GLOB.announcement_systems)
-	announcer.announce("ARRIVAL", character.real_name, rank, list()) //make the list empty to make it announce it in common
+	announcer.announce("ARRIVAL", character.real_name, rank, displayed_rank, list()) //make the list empty to make it announce it in common
 
 /proc/lavaland_equipment_pressure_check(turf/T)
 	. = FALSE

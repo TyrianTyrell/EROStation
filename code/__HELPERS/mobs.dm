@@ -20,6 +20,8 @@
 		else
 			return "000"
 
+#define UNDIE_COLORABLE(U) (U?.has_color)
+
 /proc/random_underwear(gender)
 	if(!GLOB.underwear_list.len)
 		init_sprite_accessory_subtypes(/datum/sprite_accessory/underwear/bottom, GLOB.underwear_list, GLOB.underwear_m, GLOB.underwear_f)
@@ -64,6 +66,8 @@
 		init_sprite_accessory_subtypes(/datum/sprite_accessory/spines, GLOB.spines_list)
 	if(!GLOB.legs_list.len)
 		init_sprite_accessory_subtypes(/datum/sprite_accessory/legs, GLOB.legs_list)
+	if(!GLOB.body_markings_list.len)
+		init_sprite_accessory_subtypes(/datum/sprite_accessory/body_markings, GLOB.body_markings_list)
 	if(!GLOB.wings_list.len)
 		init_sprite_accessory_subtypes(/datum/sprite_accessory/wings, GLOB.wings_list)
 	if(!GLOB.deco_wings_list.len)
@@ -113,6 +117,15 @@
 				continue
 			if(!S.ckeys_allowed)
 				snowflake_mam_tails_list[S.name] = mtpath
+	var/list/snowflake_markings_list = list()
+	for(var/mmpath in GLOB.mam_body_markings_list)
+		var/datum/sprite_accessory/mam_body_markings/instance = GLOB.mam_body_markings_list[mmpath]
+		if(istype(instance, /datum/sprite_accessory))
+			var/datum/sprite_accessory/S = instance
+			if(intendedspecies && S.recommended_species && !S.recommended_species.Find(intendedspecies))
+				continue
+			if(!S.ckeys_allowed)
+				snowflake_markings_list[S.name] = mmpath
 	var/list/snowflake_ears_list = list()
 	for(var/mepath in GLOB.mam_ears_list)
 		var/datum/sprite_accessory/ears/mam_ears/instance = GLOB.mam_ears_list[mepath]
@@ -166,6 +179,7 @@
 		"ears"				= "None",
 		"frills"			= pick(GLOB.frills_list),
 		"spines"			= pick(GLOB.spines_list),
+		"spines" = pick(GLOB.spines_list),
 		"legs"				= pick("Plantigrade","Digitigrade"),
 		"caps"				= pick(GLOB.caps_list),
 		"insect_wings"		= pick(GLOB.insect_wings_list),
@@ -183,33 +197,67 @@
 		"xenodorsal" 		= "Standard",
 		"xenohead" 			= "Standard",
 		"xenotail" 			= "Xenomorph Tail",
+		"exhibitionist" 	= FALSE,
 		"genitals_use_skintone"	= FALSE,
 		"has_cock"			= FALSE,
 		"cock_shape"		= pick(GLOB.cock_shapes_list),
 		"cock_length"		= COCK_SIZE_DEF,
+		"belly_size"		= 1,
+		"butt_size"			= 1,
 		"cock_diameter_ratio"	= COCK_DIAMETER_RATIO_DEF,
 		"cock_color"		= pick("FFFFFF","7F7F7F", "7FFF7F", "7F7FFF", "FF7F7F", "7FFFFF", "FF7FFF", "FFFF7F"),
 		"cock_taur"			= FALSE,
+		"has_sheath"		= FALSE,
+		"sheath_color"		= pick("FFFFFF","7F7F7F", "7FFF7F", "7F7FFF", "FF7F7F", "7FFFFF", "FF7FFF", "FFFF7F"),
+		"has_belly" 		= FALSE,
+		"hide_belly" 		= FALSE,
+		"inflatable_belly" 	= FALSE,
+		"belly_color" 		= pick("FFFFFF","7F7F7F", "7FFF7F", "7F7FFF", "FF7F7F", "7FFFFF", "FF7FFF", "FFFF7F"),
 		"has_balls" 		= FALSE,
+		"has_anus" 			= FALSE,
+		"butt_color" 		= pick("FFFFFF","7F7F7F", "7FFF7F", "7F7FFF", "FF7F7F", "7FFFFF", "FF7FFF", "FFFF7F"),
+		"balls_internal" 	= FALSE,
 		"balls_color" 		= pick("FFFFFF","7F7F7F", "7FFF7F", "7F7FFF", "FF7F7F", "7FFFFF", "FF7FFF", "FFFF7F"),
+		"balls_amount"		= 2,
+		"balls_sack_size"	= BALLS_SACK_SIZE_DEF,
 		"balls_size"		= BALLS_SIZE_DEF,
 		"balls_shape"		= DEF_BALLS_SHAPE,
 		"balls_cum_rate"	= CUM_RATE,
 		"balls_cum_mult"	= CUM_RATE_MULT,
 		"balls_efficiency"	= CUM_EFFICIENCY,
+		"balls_fluid" 		= /datum/reagent/consumable/semen,
+		"has_ovi"			= FALSE,
+		"ovi_shape"			= "knotted",
+		"ovi_length"		= 6,
+		"ovi_color"			= pick("FFFFFF","7F7F7F", "7FFF7F", "7F7FFF", "FF7F7F", "7FFFFF", "FF7FFF", "FFFF7F"),
+		"has_eggsack" 		= FALSE,
+		"eggsack_internal" 	= TRUE,
+		"eggsack_color" 	= pick("FFFFFF","7F7F7F", "7FFF7F", "7F7FFF", "FF7F7F", "7FFFFF", "FF7FFF", "FFFF7F"),
+		"eggsack_size" 		= BALLS_SACK_SIZE_DEF,
+		"eggsack_egg_color" = pick("FFFFFF","7F7F7F", "7FFF7F", "7F7FFF", "FF7F7F", "7FFFFF", "FF7FFF", "FFFF7F"),
+		"eggsack_egg_size" 	= EGG_GIRTH_DEF,
 		"has_breasts" 		= FALSE,
 		"breasts_color" 	= pick("FFFFFF","7F7F7F", "7FFF7F", "7F7FFF", "FF7F7F", "7FFFFF", "FF7FFF", "FFFF7F"),
 		"breasts_size" 		= pick(CONFIG_GET(keyed_list/breasts_cups_prefs)),
 		"breasts_shape"		= DEF_BREASTS_SHAPE,
+		"breasts_fluid" 	= /datum/reagent/consumable/milk,
 		"breasts_producing" = FALSE,
 		"has_vag"			= FALSE,
 		"vag_shape"			= pick(GLOB.vagina_shapes_list),
 		"vag_color"			= pick("FFFFFF","7F7F7F", "7FFF7F", "7F7FFF", "FF7F7F", "7FFFFF", "FF7FFF", "FFFF7F"),
+		"vag_clits"			= 1,
+		"vag_clit_diam"		= 0.25,
+		"vag_clit_len"		= 0.25,
 		"has_womb"			= FALSE,
 		"balls_visibility"	= GEN_VISIBLE_NO_UNDIES,
 		"breasts_visibility"= GEN_VISIBLE_NO_UNDIES,
 		"cock_visibility"	= GEN_VISIBLE_NO_UNDIES,
 		"vag_visibility"	= GEN_VISIBLE_NO_UNDIES,
+		"can_get_preg"		= FALSE,
+		"womb_cum_rate"		= CUM_RATE,
+		"womb_cum_mult"		= CUM_RATE_MULT,
+		"womb_efficiency"	= CUM_EFFICIENCY,
+		"womb_fluid" 		= "femcum",
 		"ipc_screen"		= snowflake_ipc_antenna_list ? pick(snowflake_ipc_antenna_list) : "None",
 		"ipc_antenna"		= "None",
 		"flavor_text"		= "",
@@ -217,6 +265,7 @@
 		"meat_type"			= "Mammalian",
 		"body_model"		= body_model,
 		"body_size"			= RESIZE_DEFAULT_SIZE
+		"ooc_text"			= ""
 		))
 
 /proc/random_hair_style(gender)
@@ -332,6 +381,179 @@ GLOBAL_LIST_EMPTY(species_datums)
 			return "elderly"
 		else
 			return "unknown"
+
+/proc/do_mob(mob/user , mob/target, time = 30, uninterruptible = 0, progress = 1, datum/callback/extra_checks = null, ignorehelditem = 0)
+	if(!user || !target)
+		return 0
+	var/user_loc = user.loc
+
+	//Mood modifier
+	if(user.actionmoodmultiplier) //if the user has a action modifier
+		time = time * user.actionmoodmultiplier //apply the modifier to the time
+		time = clamp(time, 0.1, 9999) //make sure its within range.
+
+	var/drifting = 0
+	if(!user.Process_Spacemove(0) && user.inertia_dir)
+		drifting = 1
+
+	var/target_loc = target.loc
+
+	var/holding = user.get_active_held_item()
+	var/datum/progressbar/progbar
+	if (progress)
+		progbar = new(user, time, target)
+
+	var/endtime = world.time+time
+	var/starttime = world.time
+	. = 1
+	while (world.time < endtime)
+		stoplag(1)
+		if (progress)
+			progbar.update(world.time - starttime)
+		if(QDELETED(user) || QDELETED(target))
+			. = 0
+			break
+		if(uninterruptible)
+			continue
+
+		if(drifting && !user.inertia_dir)
+			drifting = 0
+			user_loc = user.loc
+
+		if((!drifting && user.loc != user_loc) || target.loc != target_loc || (!ignorehelditem && user.get_active_held_item() != holding) || user.incapacitated() || user.lying || (extra_checks && !extra_checks.Invoke()))
+			. = 0
+			break
+	if (progress)
+		qdel(progbar)
+
+
+//some additional checks as a callback for for do_afters that want to break on losing health or on the mob taking action
+/mob/proc/break_do_after_checks(list/checked_health, check_clicks)
+	if(check_clicks && next_move > world.time)
+		return FALSE
+	return TRUE
+
+//pass a list in the format list("health" = mob's health var) to check health during this
+/mob/living/break_do_after_checks(list/checked_health, check_clicks)
+	if(islist(checked_health))
+		if(health < checked_health["health"])
+			return FALSE
+		checked_health["health"] = health
+	return ..()
+
+/proc/do_after(mob/user, var/delay, needhand = 1, atom/target = null, progress = 1, datum/callback/extra_checks = null)
+	if(!user)
+		return 0
+	var/atom/Tloc = null
+	if(target && !isturf(target))
+		Tloc = target.loc
+
+	var/atom/Uloc = user.loc
+
+	var/drifting = 0
+	if(!user.Process_Spacemove(0) && user.inertia_dir)
+		drifting = 1
+
+	var/holding = user.get_active_held_item()
+
+	var/holdingnull = 1 //User's hand started out empty, check for an empty hand
+	if(holding)
+		holdingnull = 0 //Users hand started holding something, check to see if it's still holding that
+
+	delay *= user.do_after_coefficent()
+
+	var/datum/progressbar/progbar
+	if (progress)
+		progbar = new(user, delay, target)
+
+	var/endtime = world.time + delay
+	var/starttime = world.time
+	. = 1
+	while (world.time < endtime)
+		stoplag(1)
+		if (progress)
+			progbar.update(world.time - starttime)
+
+		if(drifting && !user.inertia_dir)
+			drifting = 0
+			Uloc = user.loc
+
+		if(QDELETED(user) || user.stat || user.IsKnockdown() || user.IsStun() || (!drifting && user.loc != Uloc) || (extra_checks && !extra_checks.Invoke()))
+			. = 0
+			break
+
+		if(isliving(user))
+			var/mob/living/L = user
+			if(L.recoveringstam)
+				. = 0
+				break
+
+		if(!QDELETED(Tloc) && (QDELETED(target) || Tloc != target.loc))
+			if((Uloc != Tloc || Tloc != user) && !drifting)
+				. = 0
+				break
+
+		if(needhand)
+			//This might seem like an odd check, but you can still need a hand even when it's empty
+			//i.e the hand is used to pull some item/tool out of the construction
+			if(!holdingnull)
+				if(!holding)
+					. = 0
+					break
+			if(user.get_active_held_item() != holding)
+				. = 0
+				break
+	if (progress)
+		qdel(progbar)
+
+/mob/proc/do_after_coefficent() // This gets added to the delay on a do_after, default 1
+	. = 1
+	return
+
+/proc/do_after_mob(mob/user, var/list/targets, time = 30, uninterruptible = 0, progress = 1, datum/callback/extra_checks)
+	if(!user || !targets)
+		return 0
+	if(!islist(targets))
+		targets = list(targets)
+	var/user_loc = user.loc
+
+	var/drifting = 0
+	if(!user.Process_Spacemove(0) && user.inertia_dir)
+		drifting = 1
+
+	var/list/originalloc = list()
+	for(var/atom/target in targets)
+		originalloc[target] = target.loc
+
+	var/holding = user.get_active_held_item()
+	var/datum/progressbar/progbar
+	if(progress)
+		progbar = new(user, time, targets[1])
+
+	var/endtime = world.time + time
+	var/starttime = world.time
+	. = 1
+	mainloop:
+		while(world.time < endtime)
+			stoplag(1)
+			if(progress)
+				progbar.update(world.time - starttime)
+			if(QDELETED(user) || !targets)
+				. = 0
+				break
+			if(uninterruptible)
+				continue
+
+			if(drifting && !user.inertia_dir)
+				drifting = 0
+				user_loc = user.loc
+
+			for(var/atom/target in targets)
+				if((!drifting && user_loc != user.loc) || QDELETED(target) || originalloc[target] != target.loc || user.get_active_held_item() != holding || user.incapacitated() || user.lying || (extra_checks && !extra_checks.Invoke()))
+					. = 0
+					break mainloop
+	if(progbar)
+		qdel(progbar)
 
 /proc/is_species(A, species_datum)
 	. = FALSE

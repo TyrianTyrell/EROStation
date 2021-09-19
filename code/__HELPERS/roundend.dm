@@ -16,8 +16,9 @@
 	var/list/area/shuttle_areas
 	if(SSshuttle?.emergency)
 		shuttle_areas = SSshuttle.emergency.shuttle_areas
-
-	for(var/mob/M in GLOB.mob_list)
+	for(var/mob/m in GLOB.mob_list)
+		var/escaped
+		var/category
 		var/list/mob_data = list()
 		if(isnewplayer(M))
 			continue
@@ -241,6 +242,20 @@
 	var/popcount = gather_roundend_feedback()
 	display_report(popcount)
 
+
+	CHECK_TICK
+
+	//Hyper bot list players
+	botmsg += "\n**The Crew!** ```"
+	for(var/p in GLOB.player_list)
+		var/mob/living/P = p //the living crew members
+		if(P)
+			botmsg += "[P.real_name]"
+			if(P.job)
+				botmsg += " ([P.job])"
+			botmsg += "\n"
+	botmsg += "```"
+
 	CHECK_TICK
 
 	// Add AntagHUD to everyone, see who was really evil the whole time!
@@ -248,6 +263,15 @@
 		for(var/m in GLOB.player_list)
 			var/mob/M = m
 			H.add_hud_to(M)
+
+	CHECK_TICK
+
+	set_observer_default_invisibility(0, "<span class='warning'>The round is over! You are now visible to the living.</span>")
+
+	CHECK_TICK
+	// Stop eorg mech prepping.
+	for(var/obj/mecha/combat/Obj in world)
+		qdel(Obj)
 
 	CHECK_TICK
 
@@ -305,6 +329,7 @@
 	SSblackbox.Seal()
 
 	sleep(50)
+	// world.hypermessage(botmsg)
 	ready_for_reboot = TRUE
 	standard_reboot()
 
