@@ -17,7 +17,7 @@
 	plane = ABOVE_WALL_PLANE
 	rad_flags = RAD_PROTECT_CONTENTS | RAD_NO_CONTAMINATE
 	var/dpdir = NONE					// bitmask of pipe directions
-	var/initialize_dirs = NONE			// bitflags of pipe directions added on init, see \code\_DEFINES\pipe_construction.dm
+	var/initialize_dirs = NONE			// bitflags of pipe directions added on init, see \code\__DEFINES\pipe_construction.dm
 	var/flip_type						// If set, the pipe is flippable and becomes this type when flipped
 	var/canclank = FALSE				// Determines if the pipe will cause a clank sound when holders pass by it. use the IFFY define for weird-ass edge cases like the segment subtype
 	var/obj/structure/disposalconstruct/stored
