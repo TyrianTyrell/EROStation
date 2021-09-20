@@ -2,10 +2,21 @@
 	"recommendations": [
 		"gbasood.byond-dm-language-support",
 		"platymuus.dm-langclient",
-		"EditorConfig.EditorConfig",
+		"editorconfig.editorconfig",
 		"arcanis.vscode-zipfs",
 		"dbaeumer.vscode-eslint",
 		"stylemistake.auto-comment-blocks",
-		"Donkie.vscode-tgstation-test-adapter"
+		"donkie.vscode-tgstation-test-adapter",
+		"kevinkyang.auto-comment-blocks",
+		"formulahendry.auto-close-tag",
+		"hookyqr.beautify",
+		"ss13.byond",
+		"ms-azuretools.vscode-docker",
+		"donjayamanne.githistory",
+		"felipecaputo.git-project-manager",
+		"github.vscode-pull-request-github",
+		"eamodio.gitlens",
+		"ms-python.python",
+		"dbaeumer.jshint"
 	]
 }
