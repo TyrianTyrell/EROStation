@@ -1,8 +1,11 @@
 //THIS FILE CONTAINS CONSTANTS, PROCS, AND OTHER THINGS//
 /////////////////////////////////////////////////////////
 
-/mob/proc/setClickCooldown(var/timeout)
+/*/mob/proc/setClickCooldown(var/timeout)
 	next_move = max(world.time + timeout, next_move)
+
+	No fkin idea what next_move is and it isn't even declared in the original hyper code kek
+	*/
 
 //Genitals and Arousal Lists
 GLOBAL_LIST_EMPTY(cock_shapes_icons) //Associated list for names->icon_states for cockshapes.
@@ -17,6 +20,8 @@ GLOBAL_LIST_INIT(cum_into_containers_list, list(/obj/item/reagent_containers/foo
 
 GLOBAL_LIST_INIT(cum_id_list, /datum/reagent/consumable/semen)
 GLOBAL_LIST_INIT(milk_id_list, /datum/reagent/consumable/milk)
+
+GLOBAL_LIST_EMPTY(materials_list)
 
 //LOOC toggles
 /client/verb/listen_looc()

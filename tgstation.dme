@@ -3709,7 +3709,6 @@
 #include "code\modules\zombie\organs.dm"
 #include "hyperstation\code\_DEFINES\admin.dm"
 #include "hyperstation\code\_DEFINES\atmospherics.dm"
-#include "hyperstation\code\_DEFINES\citadel_defines.dm"
 #include "hyperstation\code\_DEFINES\combat.dm"
 #include "hyperstation\code\_DEFINES\components.dm"
 #include "hyperstation\code\_DEFINES\construction.dm"

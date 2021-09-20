@@ -16,7 +16,7 @@
 	var/list/area/shuttle_areas
 	if(SSshuttle?.emergency)
 		shuttle_areas = SSshuttle.emergency.shuttle_areas
-	for(var/mob/m in GLOB.mob_list)
+	for(var/mob/M in GLOB.mob_list)
 		var/escaped
 		var/category
 		var/list/mob_data = list()
@@ -243,7 +243,7 @@
 	display_report(popcount)
 
 
-	CHECK_TICK
+	/*CHECK_TICK
 
 	//Hyper bot list players
 	botmsg += "\n**The Crew!** ```"
@@ -257,6 +257,9 @@
 	botmsg += "```"
 
 	CHECK_TICK
+
+	no idea how the thing above works lol
+	*/
 
 	// Add AntagHUD to everyone, see who was really evil the whole time!
 	for(var/datum/atom_hud/antag/H in GLOB.huds)
