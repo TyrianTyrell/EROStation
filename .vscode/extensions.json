@@ -17,6 +17,8 @@
 		"github.vscode-pull-request-github",
 		"eamodio.gitlens",
 		"ms-python.python",
-		"dbaeumer.jshint"
+		"dbaeumer.jshint",
+		"alefragnani.bookmarks",
+		"ecmel.vscode-html-css"
 	]
 }
