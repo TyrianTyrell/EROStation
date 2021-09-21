@@ -21,8 +21,6 @@ GLOBAL_LIST_INIT(cum_into_containers_list, list(/obj/item/reagent_containers/foo
 GLOBAL_LIST_INIT(cum_id_list, /datum/reagent/consumable/semen)
 GLOBAL_LIST_INIT(milk_id_list, /datum/reagent/consumable/milk)
 
-GLOBAL_LIST_EMPTY(materials_list)
-
 //LOOC toggles
 /client/verb/listen_looc()
 	set name = "Show/Hide LOOC"

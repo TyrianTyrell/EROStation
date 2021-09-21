@@ -52,6 +52,7 @@ GLOBAL_LIST_INIT(maintenance_loot, list(
 	/obj/item/stack/cable_coil/random = 4,
 	/obj/item/stack/cable_coil/random/five = 6,
 	/obj/item/stack/medical/suture = 1,
+	/obj/item/stack/medical/bruise_pack = 1,
 	/obj/item/stack/rods/ten = 9,
 	/obj/item/stack/rods/twentyfive = 1,
 	/obj/item/stack/rods/fifty = 1,
@@ -112,7 +113,14 @@ GLOBAL_LIST_INIT(maintenance_loot, list(
 	/obj/item/storage/box/marshmallow = 2,
 	/obj/item/clothing/gloves/tackler/offbrand = 1,
 	/obj/item/stack/sticky_tape = 1,
-	"" = 3
+	/obj/item/autosurgeon/penis = 1,
+	/obj/item/autosurgeon/testicles = 1,
+	/obj/item/autosurgeon/vagina = 1,
+	/obj/item/autosurgeon/breasts = 1,
+	/obj/item/autosurgeon/womb = 1,
+	/obj/item/toy/plush/random = 1,
+	/obj/item/grenade/spawnergrenade/clustaur = 1,
+	"" = 3,
 	))
 
 GLOBAL_LIST_INIT(ratking_trash, list(//Garbage: used by the regal rat mob when spawning garbage.
@@ -131,4 +139,6 @@ GLOBAL_LIST_INIT(ratking_coins, list(//Coins: Used by the regal rat mob when spa
 			/obj/item/coin/iron,
 			/obj/item/coin/silver,
 			/obj/item/coin/plastic,
-			/obj/item/coin/titanium))
+			/obj/item/coin/titanium,
+			/obj/item/coin/gold,
+			/obj/item/coin/plasma))
