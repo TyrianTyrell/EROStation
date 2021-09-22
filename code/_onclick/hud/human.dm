@@ -313,6 +313,11 @@
 	healths = new /atom/movable/screen/healths()
 	healths.hud = src
 	infodisplay += healths
+	//CIT CHANGE - adds arousal and stamina to hud
+	arousal = new /obj/screen/arousal()
+	arousal.icon_state = (owner.canbearoused == 1 ? "arousal0" : "")
+	arousal.hud = src
+	infodisplay += arousal
 
 	staminas = new /atom/movable/screen/staminas()
 	staminas.hud = src

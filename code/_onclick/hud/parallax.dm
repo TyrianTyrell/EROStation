@@ -13,6 +13,12 @@
 		if(SSparallax.random_layer)
 			C.parallax_layers_cached += new SSparallax.random_layer
 		C.parallax_layers_cached += new /atom/movable/screen/parallax_layer/layer_3(null, C.view)
+		if(SSmapping.config?.map_name == "Layenia Station")
+			C.parallax_layers_cached += new /atom/movable/screen/parallax_layer/layenia/horizon(null, C.view)
+			C.parallax_layers_cached += new /atom/movable/screen/parallax_layer/layenia/clouds1(null, C.view)
+			C.parallax_layers_cached += new /atom/movable/screen/parallax_layer/layenia/clouds2(null, C.view)
+			C.parallax_layers_cached += new /atom/movable/screen/parallax_layer/layenia/clouds3(null, C.view)
+
 
 	C.parallax_layers = C.parallax_layers_cached.Copy()
 
@@ -54,17 +60,17 @@
 		switch(C.prefs.parallax)
 			if (PARALLAX_INSANE)
 				C.parallax_throttle = FALSE
-				C.parallax_layers_max = 5
+				C.parallax_layers_max = 10
 				return TRUE
 
 			if (PARALLAX_MED)
 				C.parallax_throttle = PARALLAX_DELAY_MED
-				C.parallax_layers_max = 3
+				C.parallax_layers_max = 8
 				return TRUE
 
 			if (PARALLAX_LOW)
 				C.parallax_throttle = PARALLAX_DELAY_LOW
-				C.parallax_layers_max = 1
+				C.parallax_layers_max = 7
 				return TRUE
 
 			if (PARALLAX_DISABLE)
@@ -72,7 +78,7 @@
 
 	//This is high parallax.
 	C.parallax_throttle = PARALLAX_DELAY_DEFAULT
-	C.parallax_layers_max = 4
+	C.parallax_layers_max = 10
 	return TRUE
 
 /datum/hud/proc/update_parallax_pref(mob/viewmob)
@@ -304,6 +310,9 @@
 /atom/movable/screen/parallax_layer/random/asteroids
 	icon_state = "asteroids"
 
+/atom/movable/screen/parallax_layer/random/nebula
+	icon_state = "nebula1"
+
 /atom/movable/screen/parallax_layer/planet
 	icon_state = "planet"
 	blend_mode = BLEND_OVERLAY
@@ -319,4 +328,45 @@
 	invisibility = is_station_level(posobj.z) ? 0 : INVISIBILITY_ABSTRACT
 
 /atom/movable/screen/parallax_layer/planet/update_o()
-	return //Shit won't move
+	return //Shit wont move
+
+//Layenia parallaxes
+
+/atom/movable/screen/parallax_layer/layenia
+	icon_state = null
+	blend_mode = BLEND_OVERLAY
+	absolute = TRUE
+	speed = 0.6
+	layer = 5
+
+/atom/movable/screen/parallax_layer/layenia/horizon
+	icon_state = "layeniahorizon"
+	speed = 0.3
+	absolute = FALSE
+
+/atom/movable/screen/parallax_layer/layenia/clouds1
+	icon_state = "layenia1"
+	speed = 0.6
+	layer = 6
+
+/atom/movable/screen/parallax_layer/layenia/clouds2
+	icon_state = "layenia2"
+	speed = 1
+	layer = 7
+
+/atom/movable/screen/parallax_layer/layenia/clouds3
+	icon_state = "layenia3"
+	speed = 1.4
+	layer = 8
+
+/atom/movable/screen/parallax_layer/layenia/update_status(mob/M)
+	var/client/C = M.client
+	var/turf/posobj = get_turf(C.eye)
+	if(!posobj)
+		return
+	invisibility = is_station_level(posobj.z) ? 0 : INVISIBILITY_ABSTRACT
+
+/*
+/atom/movable/screen/parallax_layer/tparallax1/update_status(mob/M)
+	if(SSmapping.config?.map_name != "Layenia Station")
+*/
