@@ -215,3 +215,8 @@ GLOBAL_LIST_INIT(bitflags, list(
 
 /// 33554431 (2^24 - 1) is the maximum value our bitflags can reach.
 #define MAX_BITFLAG_DIGITS 8
+
+//Hyper stuff
+#define PASSMACHINES	(1<<7)
+#define PASSCOMPUTER	(1<<8)
+#define PASSDOOR		(1<<13)

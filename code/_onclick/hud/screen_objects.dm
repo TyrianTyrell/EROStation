@@ -15,6 +15,7 @@
 	speech_span = SPAN_ROBOT
 	vis_flags = VIS_INHERIT_PLANE
 	appearance_flags = APPEARANCE_UI
+	resistance_flags = INDESTRUCTIBLE | LAVA_PROOF | FIRE_PROOF | UNACIDABLE | ACID_PROOF
 	/// A reference to the object in the slot. Grabs or items, generally.
 	var/obj/master = null
 	/// A reference to the owner HUD, if any.
@@ -32,6 +33,9 @@
 	 * But for now, this works.
 	 */
 	var/del_on_map_removal = TRUE
+
+/atom/movable/screen/take_damage()
+	return
 
 /atom/movable/screen/Destroy()
 	master = null
